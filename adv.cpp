@@ -6,15 +6,29 @@ int main (){
 
     const int numero_secreto = 42;
 
-    cout << "Digite seu chute" << endl;
-    int chute;
-    cin >> chute;
+    bool nao_acertou = true;
+    int tentativas = 0;
 
-    bool acertou = chute == numero_secreto;
+    double pontos = 1000.0;
 
-    if(acertou){cout << "Acertou o numero!" << endl;}
-    else{
-        if(chute > numero_secreto){cout << "Chutou muito alto" << endl;}
-        if(chute < numero_secreto){cout << "Chutou muito baixo" << endl;}
+    while (nao_acertou)
+    {
+        cout << "Tentativa " << tentativas << endl;
+        cout << "Digite seu chute ";
+        int chute;
+        cin >> chute;
+
+        bool acertou = chute == numero_secreto;
+
+        if(acertou){cout << "Acertou o numero!" << endl; nao_acertou = false;}
+        else{
+            pontos -= (chute - numero_secreto)/2
+            tentativas++;
+            if(chute > numero_secreto){cout << "Chutou muito alto" << endl;}
+            if(chute < numero_secreto){cout << "Chutou muito baixo" << endl;}
+        }
     }
+
+    cout << "Venceu em " << tentativas << " tentativas!";
+    
 }
